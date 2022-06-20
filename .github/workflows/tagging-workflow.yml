@@ -9,15 +9,13 @@ jobs:
   get-tags:
     runs-on: ubuntu-latest
     steps:
-    - name: run script
-      uses: actions/github-script@v6
-      with:
-        script: |
-          github.rest.git.getRef({
-            owner: 'srh-sloan',
-            repo: 'actions-in-action',
-            ref: 'tags/1.0',
-          });
-    - name: Get result
-      run: echo "${{steps.set-result.outputs.result}}"
+    - name: Check if tag exists
+    - uses: mukunku/tag-exists-action@v1.0.0
+      id: checkTag
+      with: 
+        tag: 'v1'
+ #     env:
+ #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: echo ${{ steps.checkTag.outputs.exists }}
 
