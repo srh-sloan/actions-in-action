@@ -14,4 +14,10 @@ jobs:
       - name: run script
         run: echo in script
 
+      - name: get tags
+        uses: actions/github-script@v6
+        with:
+          script: |
+            echo running script in github-script step
+
 
