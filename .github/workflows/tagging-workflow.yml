@@ -12,5 +12,7 @@ jobs:
     - name: run script
       uses: actions/github-script@v6
       with:
-        script: console.log('hello world')
+        script: |
+          console.log('hello world')
+          consolge.log('another line')
 
