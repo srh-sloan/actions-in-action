@@ -14,8 +14,8 @@ jobs:
       id: checkTag
       with: 
         tag: 'v1'
- #     env:
- #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - run: echo ${{ steps.checkTag.outputs.exists }}
 
