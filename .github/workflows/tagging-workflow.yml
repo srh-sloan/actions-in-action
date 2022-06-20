@@ -10,33 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
         contents: write
-    continue-on-error: true
     steps:
     - uses: actions/checkout@v3
+    
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Get package version
+      id: package_version
+      run: echo "::set-output name=python_version::"$(python setup.py --version)
+
     - uses: ncipollo/release-action@v1
       name: create release
       id: create_release
-      continue-on-error: true
       with:
         commit: tagging
-        tag: v2
+        tag: ${{ steps.package_version.outputs.python }}
         token: ${{ secrets.GITHUB_TOKEN }}
-    
-    - name: check release created
-      run: |
-        echo Output: ${{ steps.create_release.outputs.code }}
-
-
-  tag-exists:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check if tag exists
-      uses: mukunku/tag-exists-action@v1.0.0
-      id: checkTag
-      with: 
-        tag: 'v2'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - run: echo ${{ steps.checkTag.outputs.exists }}
  
