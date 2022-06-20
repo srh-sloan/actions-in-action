@@ -13,10 +13,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: ncipollo/release-action@v1
+      name: create release
+      id: create_release
       with:
         commit: tagging
         tag: v2
         token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: check release created
+      run: |
+        echo Output: ${{ steps.create_release.outputs }}
 
 
   tag-exists:
