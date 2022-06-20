@@ -9,10 +9,8 @@ jobs:
   welcome:
     runs-on: ubuntu-latest
     steps:
-      - name: GitHub Script
-        uses: actions/github-script@v6.1.0
-        with:
-          debug: True
-          # The script to run
-          script: echo hello world
+    - name: View context attributes
+      uses: actions/github-script@v6
+      with:
+        script: console.log(context)
 
