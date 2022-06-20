@@ -24,7 +24,7 @@ jobs:
     
     - name: check release created
       run: |
-        echo Output: ${{ steps.create_release.outputs }}
+        echo Output: ${{ steps.create_release.outputs.code }}
 
 
   tag-exists:
