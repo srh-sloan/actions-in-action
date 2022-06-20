@@ -3,7 +3,7 @@ name: tagging
 on: 
   workflow_dispatch:
   push:
-    branches: [ "tagging" ]
+    branches: [ "main" ]
 
 jobs:
   create-release:
@@ -18,7 +18,6 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
- #     run: echo "::set-output name=python_version::"$(python setup.py --version)
     - name: Get package version
       id: package_version
       run: echo "::set-output name=app_version::"$(python setup.py --version)
@@ -30,7 +29,7 @@ jobs:
       name: create release
       id: create_release
       with:
-        commit: tagging
+        commit: main
         tag: ${{ steps.package_version.outputs.app_version }}
         token: ${{ secrets.GITHUB_TOKEN }}
  
