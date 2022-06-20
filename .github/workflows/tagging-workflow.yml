@@ -13,6 +13,11 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          console.log('hello world')
-          consolge.log('another line')
+          github.rest.git.getRef({
+            owner: 'srh-sloan',
+            repo: 'actions-in-action',
+            ref: 'tags/1.0',
+          });
+    - name: Get result
+      run: echo "${{steps.set-result.outputs.result}}"
 
