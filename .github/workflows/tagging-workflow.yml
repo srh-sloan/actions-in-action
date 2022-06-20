@@ -14,11 +14,11 @@ jobs:
     - uses: actions/checkout@v3
     - uses: ncipollo/release-action@v1
       with:
-        commit: 00c94e1
+        commit: tagging
         tag: v2
         token: ${{ secrets.GITHUB_TOKEN }}
 
-        
+
   tag-exists:
     runs-on: ubuntu-latest
     steps:
