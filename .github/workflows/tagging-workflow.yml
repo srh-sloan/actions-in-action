@@ -6,11 +6,11 @@ on:
     branches: [ "tagging" ]
 
 jobs:
-  welcome:
+  get-tags:
     runs-on: ubuntu-latest
     steps:
-    - name: View context attributes
+    - name: run script
       uses: actions/github-script@v6
       with:
-        script: console.log(context)
+        script: console.log('hello world')
 
