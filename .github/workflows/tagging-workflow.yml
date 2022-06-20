@@ -1,0 +1,17 @@
+name: tagging
+
+on: 
+  workflow_dispatch:
+  push:
+    branches: [ "tagging" ]
+
+jobs:
+  get-tags:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: run script
+        run: echo in script
+
+
