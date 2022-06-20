@@ -6,7 +6,20 @@ on:
     branches: [ "tagging" ]
 
 jobs:
-  get-tags:
+  create-release:
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+    steps:
+    - uses: actions/checkout@v3
+    - uses: ncipollo/release-action@v1
+      with:
+        commit: 00c94e1
+        tag: v2
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+        
+  tag-exists:
     runs-on: ubuntu-latest
     steps:
     - name: Check if tag exists
