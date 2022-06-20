@@ -9,8 +9,9 @@ jobs:
   welcome:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v5
+      - name: GitHub Script
+        uses: actions/github-script@v6.1.0
         with:
-          script: |
-            echo hello
+          # The script to run
+          script: echo hello world
 
