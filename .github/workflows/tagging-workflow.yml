@@ -21,15 +21,16 @@ jobs:
  #     run: echo "::set-output name=python_version::"$(python setup.py --version)
     - name: Get package version
       id: package_version
-      run: echo "::set-output name=python_version::"$(python setup.py --version)
+      run: echo "::set-output name=app_version::"$(python setup.py --version)
     - name: print package version
       id: print_version
-      run: echo ${{ steps.package_version.outputs.python_version}}
-#    - uses: ncipollo/release-action@v1
-#      name: create release
-#      id: create_release
-#      with:
-#        commit: tagging
-#        tag: ${{ steps.package_version.outputs.python }}
-#        token: ${{ secrets.GITHUB_TOKEN }}
+      run: echo ${{ steps.package_version.outputs.app_version}}
+
+    - uses: ncipollo/release-action@v1
+      name: create release
+      id: create_release
+      with:
+        commit: tagging
+        tag: ${{ steps.package_version.outputs.app_version }}
+        token: ${{ secrets.GITHUB_TOKEN }}
  
