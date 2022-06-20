@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 setup(
     name='petrocks',
-    version='0.3.1',    
+    version='0.3.2',    
     description='Package for making pet rocks',
     url='https://github.com/srh-sloan/pet-rocks',
     author='Sarah Sloan',
